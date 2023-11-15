@@ -1,0 +1,187 @@
+/*
+Hoja de estilo responsivo
+Autor: BAOZ
+*/
+
+a:link{color:#ffffff;}
+a:visited{color:#000000; font-weight: lighter;}
+a:hover{color:hsl(59, 72%, 52%); font-weight: bold;}
+a.menu{
+	display: inline-block;
+	padding: 0.5em;
+	color: hsl(0, 0%, 6%);
+}
+a.menu_inhab{
+	display: none;
+}
+
+body{
+	font-family: Verdana, Helvetica, Arial, "Times New Roman";
+	color: #000000;
+}
+img, video, canvas {
+  max-width: 100%;
+}
+header{
+	font-weight:bold;
+	text-align: left;
+}
+main {
+	border-radius: 1rem;
+	border: 0.2rem solid #2B7863;
+	text-transform: none;
+}
+section{
+	text-align: justify;
+}
+
+table{
+	border-collapse: collapse; /*no aparezcan los bordes*/
+	width: 100%;
+}
+td, th {
+  border: 0.02em solid #c6cfcd;
+  padding: 0.5em;
+}
+th {
+  text-align: center;
+  background-color: #eff147b2;
+}
+tr:nth-child(even){/*el color del fondo de renglones impares*/
+	background-color: #e7e298;
+} 
+#titPral{
+	display: inline; 
+	vertical-align:90%;
+}
+
+/*Definir áreas para grid*/
+#main-header {
+	grid-area: header;
+	border-radius: 1rem;
+	border: 0.2rem solid #63c7ee;
+	padding: 0.2em;
+	height: 5.5em;
+	color: hsl(0, 0%, 6%);
+	font-size: large;
+	background-color: #63c7ee;/*Blanco con transparencia*/
+	text-transform: capitalize;
+	
+}
+#main-nav {
+	grid-area: nav;
+	display: block;
+	padding: 0.3em;
+	border-radius: 1rem;
+	border: 0.2rem solid #6cebba;
+	background-color: #6cebba;
+	
+}
+#main-content {
+	grid-area: content;
+	padding: 0.5em;
+	background-color: #ffffff;
+	border: 0.2rem solid #f5f78ad5;
+}
+#main-aside {
+	grid-area: sidebar;
+	padding: 0.5em;
+	border-radius: 1rem;
+	border: 0.2rem solid #6cebba;
+	background-color: #6cebba;
+}
+#main-advertisement {
+	grid-area: advertisement;
+	padding: 0.5em;
+	border-radius: 1rem;
+	border: 0.2rem solid #6cebba;
+	background-color: #6cebba;
+}
+#main-footer {
+	grid-area: footer;
+	font-size: 75%;
+	padding: 0.625em 0.9em 1.4em;
+	background-color: #63c7ee;
+	text-align: center;
+	color: #0a0a0a;
+}
+
+/*Definir contenido del grid (y como no se indica otra cosa, será una columna)*/
+#main-layout {
+	display: grid;
+	grid-gap: 0.2em;
+	grid-template-areas:
+		"header"
+		"nav"
+		"content"
+		"sidebar"
+		"advertisement"
+		"footer";
+}
+
+/*Alterar distribución para dispositivos "medianos", dos columnas (3/4 y 1/4)*/
+@media (min-width: 500px) {
+	#main-layout {
+		grid-template-columns: 3fr 1fr;
+		grid-template-areas:
+			  "header header"
+			  "nav nav"
+			  "content sidebar"
+			  "footer advertisement";
+	}
+	nav a.menu {
+		display:inline-block;
+		justify-content: space-between;
+	}
+}
+
+/*Alterar distribución para dispositivos mayores (3 columnas: 1/6, 4/6, 1/6)*/
+@media (min-width: 700px) {
+	#main-layout {
+		grid-template-columns: 1fr 4fr 1fr;
+		grid-template-areas:
+			"header header  header"
+			"nav content sidebar"
+			"nav content advertisement"
+			"footer footer footer"
+	}
+	nav a.menu {
+		display:inline-block;
+		width:100%;
+	}
+	#main-content{
+		min-height: 18rem;
+	}
+	.por_columnas{
+		/*Definir número de columnas*/
+		column-count: 3;
+		
+		/*Definir separación entre columnas
+			valor en pixeles|normal|initial|inherit
+		*/
+		column-gap: 3.5em;
+		
+		/*
+			Para definir características de la línea de separación entre columnas:
+			-->Directo, column-rule: ancho, estilo y color
+			-->Por partes, column-rule-width, column-rule-style, column-rule-color
+		*/
+		
+		/*Definir ancho de línea de separación
+		medium|thin|thick|valor en pixeles |initial|inherit
+		*/
+		column-rule-width: thick;
+		
+		/*Definir estilo de línea de separación 
+			none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit
+		*/
+		column-rule-style: groove;
+		
+		/*Color de la línea*/
+		column-rule-color: DarkOliveGreen;
+	}
+	section h3{
+		column-span: all;
+		text-align: center;
+	}
+}
